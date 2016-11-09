@@ -1,0 +1,19 @@
+body{
+  background-color: black;
+  color: white;
+  background-image: url(footer_lodyas.png)
+}
+
+input{
+  color: #ccc;
+}
+
+button{
+  margin: 5px;
+}
+
+div.item{
+  float: left;
+  margin: 5px;
+
+}

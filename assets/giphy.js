@@ -39,13 +39,38 @@ function displayGif(){
       var rating = results[i].rating;
       var p = $('<p>').text("Rating: "+rating);
       var animalImge = $('<img>');
-      animalImge.attr('src',results[i].images.fixed_height.url);
+      //this is fixed src. so next thing I should do is to add data-still : url and data-play: url in different data custum attribute**
+
+      animalImge.attr('src',results[i].images.fixed_height_still.url);
+      animalImge.attr('data-still',results[i].images.fixed_height_still.url);
+      animalImge.attr('data-animate',results[i].images.fixed_height.url);
+      animalImge.attr('class','gif');
+
       animalDiv.append(p);
       animalDiv.append(animalImge);
 
       $('#animalView').prepend(animalDiv);
-
     }
+
+//why did this have to go inside?
+    $('.gif').on('click',function(){
+
+        var state = $(this).attr('data-state');
+
+        if (state == 'still'){
+          $(this).attr('src',$(this).data('animate'));
+          $(this).attr('data-state','animate');
+        }else{
+          $(this).attr('src',$(this).data('still'));
+          $(this).attr('data-state','still');
+        }
+
+    });
+
+
+
+
+
   });
 
 }
@@ -64,12 +89,12 @@ $('#addAnimal').on('click',function(){
 
   console.log(animal);
 
+  $('#animal-input').val("");
+
   renderButtons();
 
   return false;
 });
-
-
 
 
 
